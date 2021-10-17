@@ -17,6 +17,7 @@ def get_data():
 
 
 def add_data(new_book):
+    """При создании книги читаем файл с книгами, добавляем новую книгу в список и список сохраняем в файл."""
     old_book = get_data()
     old_book.append(new_book)
     save_data(old_book)
@@ -24,6 +25,8 @@ def add_data(new_book):
 
 
 def create_id(books):
+    """Генерация id. Каждая новая книга должна получать уникальный идентификатор,
+    который должен быть больше на 1, чем у предыдущей книги"""
     books = get_data()
     if not books:
         return 1
@@ -35,6 +38,7 @@ def create_id(books):
 
 
 def create_isbn() -> str:
+    """Генерация  ISBN"""
     def gen_digits(count) -> str:
         return ''.join(map(lambda x: str(randint(0, 9)), range(count)))
 

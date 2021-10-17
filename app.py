@@ -7,6 +7,7 @@ app = Flask(__name__)
 
 @app.route('/book/<int:id>')
 def book(id: int):
+    """Получение книги по id."""
     book_found = data_id(id)
     if data_id(id):
         return jsonify(book_found), 200
@@ -15,6 +16,7 @@ def book(id: int):
 
 @app.route('/new/', methods=['POST'])
 def new_book():
+    """Создание новой книги с генерацией id и isbn"""
     new_book = request.json
     new_id = create_id(book)
     new_book["id"] = new_id

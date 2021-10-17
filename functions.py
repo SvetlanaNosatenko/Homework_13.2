@@ -1,15 +1,16 @@
 import json
-import random
 from random import randint
 
 
 def save_data(book):
+    # запись данных в файл
     with open('books.json', "w", encoding='utf-8') as f:
         json.dump(book, f)
     return True
 
 
 def get_data():
+    # чтение данных из файла json
     with open('books.json', encoding='utf-8') as f:
         book = json.load(f)
         return book
@@ -47,6 +48,7 @@ def create_isbn() -> str:
 
 
 def data_id(id):
+    """При получении книги по id читаем файл с книгами, находим нужную и ее отдаем клиенту"""
     books = get_data()
     book_found = []
     for book in books:
